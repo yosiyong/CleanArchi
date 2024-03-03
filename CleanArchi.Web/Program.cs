@@ -1,5 +1,7 @@
+using CleanArchi.Application.Common.Interfaces;
 using CleanArchi.Infrastructure.Data;
 using CleanArchi.Infrastructure.Filter;
+using CleanArchi.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,7 @@ builder.Services.AddControllers(options =>
 {
     options.Filters.Add<GlobalExceptionHandler>();
 });
+builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -35,6 +38,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
