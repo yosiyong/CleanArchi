@@ -23,4 +23,8 @@
     <ProjectReference Include="..\CleanArchi.Infrastructure\CleanArchi.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\VillaImage\" />
+  </ItemGroup>
+
 </Project>

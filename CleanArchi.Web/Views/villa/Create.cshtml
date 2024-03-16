@@ -4,12 +4,12 @@
 	<div class="card-header bg-success bg-gradient ml-0 py-3">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h2 class="text-white py-2">新規登録</h2>
+				<h2 class="text-white py-2">ヴィラの新規登録</h2>
 			</div>
 		</div>
 	</div>
 	<div class="card-body border p-4">
-		<form method="post" class="row">
+		<form method="post" class="row" enctype="multipart/form-data">
 			<div class="p-3">
 				<div class="form-floating py-2 col-12">
 					<input asp-for="Name" class="form-control border shadow" />
@@ -37,7 +37,8 @@
 					<span asp-validation-for="Occupancy" class="text-danger"></span>
 				</div>
 				<div class="form-floating py-2 col-12">
-					<input asp-for="ImageUrl" class="form-control border shadow" />
+					<input asp-for="ImageUrl" hidden class="form-control border shadow" />
+					<input asp-for="Image" class="form-control border shadow" />
 					<label asp-for="ImageUrl" class="ms-2"></label>
 					<span asp-validation-for="ImageUrl" class="text-danger"></span>
 				</div>
