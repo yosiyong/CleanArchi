@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchi.Domain\CleanArchi.Domain.csproj" />
+    <ProjectReference Include="..\CleanArchi.Application\CleanArchi.Application.csproj" />
   </ItemGroup>
 
 </Project>

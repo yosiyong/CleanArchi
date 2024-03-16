@@ -7,7 +7,7 @@ namespace CleanArchi.Application.Common.Interfaces
     {
 
 		void Update(Villa entity);
-		void Save();
+		//void Save();
 
 
 		//IEnumerable<Villa> GetAll(Expression<Func<Villa, bool>>? filter = null, string? includeProperties = null);

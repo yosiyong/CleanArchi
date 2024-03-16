@@ -35,7 +35,7 @@ namespace CleanArchi.Web.Controllers
 			if (ModelState.IsValid)
 			{
 				_unitOfWork.Villa.Add(obj);
-				_unitOfWork.Villa.Save();
+				_unitOfWork.Save();
 				TempData["success"] = "正常に新規作成しました。";
 				return RedirectToAction("Index");
 			}
@@ -61,7 +61,7 @@ namespace CleanArchi.Web.Controllers
 			if (ModelState.IsValid && obj.Id > 0)
 			{
 				_unitOfWork.Villa.Update(obj);
-				_unitOfWork.Villa.Save();
+				_unitOfWork.Save();
 				TempData["success"] = "正常に更新しました。";
 				return RedirectToAction("Index");
 			}
@@ -88,7 +88,7 @@ namespace CleanArchi.Web.Controllers
 			if (objFromDb is not null)
 			{
 				_unitOfWork.Villa.Remove(objFromDb);
-				_unitOfWork.Villa.Save();
+				_unitOfWork.Save();
 				TempData["success"] = "正常に削除しました。";
 				return RedirectToAction("Index");
 			}

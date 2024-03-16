@@ -16,7 +16,7 @@ builder.Services.AddControllers(options =>
 {
     options.Filters.Add<GlobalExceptionHandler>();
 });
-builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
