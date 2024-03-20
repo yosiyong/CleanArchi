@@ -82,7 +82,28 @@ namespace CleanArchi.Web.Controllers
 		{
 			if (ModelState.IsValid && obj.Id > 0)
 			{
-				_unitOfWork.Villa.Update(obj);
+                if (obj.Image != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(obj.Image.FileName);
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images\VillaImage");
+
+					//更新前のイメージを削除
+					if (!string.IsNullOrEmpty(obj.ImageUrl))
+					{
+						var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, obj.ImageUrl.TrimStart('\\'));
+						if (System.IO.File.Exists(oldImagePath))
+						{
+							System.IO.File.Delete(oldImagePath);
+                        }
+					}
+
+                    using (var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create))
+                        //アップロードファイルを指定のフォルダにコピー保存する。
+                        obj.Image.CopyTo(fileStream);
+                    obj.ImageUrl = @"\images\VillaImage\" + fileName;
+                }
+               
+                _unitOfWork.Villa.Update(obj);
 				_unitOfWork.Save();
 				TempData["success"] = "正常に更新しました。";
 				return RedirectToAction("Index");
@@ -109,7 +130,16 @@ namespace CleanArchi.Web.Controllers
 			Villa? objFromDb = _unitOfWork.Villa.Get(u => u.Id == obj.Id);
 			if (objFromDb is not null)
 			{
-				_unitOfWork.Villa.Remove(objFromDb);
+                //イメージを削除
+                if (!string.IsNullOrEmpty(objFromDb.ImageUrl))
+                {
+                    var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, objFromDb.ImageUrl.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+                _unitOfWork.Villa.Remove(objFromDb);
 				_unitOfWork.Save();
 				TempData["success"] = "正常に削除しました。";
 				return RedirectToAction("Index");
