@@ -4,6 +4,7 @@
 	{
 		IVillaRepository Villa { get; }
 		IVillaNumberRepository VillaNumber { get; }
-		void Save();
+        IAmenityRepository Amenity { get; }
+        void Save();
 	}
 }
