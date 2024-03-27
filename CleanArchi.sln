@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchi.Application", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchi.Infrastructure", "CleanArchi.Infrastructure\CleanArchi.Infrastructure.csproj", "{735C3A40-3D8F-4D2A-92D3-4ACCC4FEE0A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchi.WebTests", "CleanArchi.WebTests\CleanArchi.WebTests.csproj", "{4C23F53B-880D-4A1D-B445-BEEE88A5F3BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{735C3A40-3D8F-4D2A-92D3-4ACCC4FEE0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{735C3A40-3D8F-4D2A-92D3-4ACCC4FEE0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{735C3A40-3D8F-4D2A-92D3-4ACCC4FEE0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C23F53B-880D-4A1D-B445-BEEE88A5F3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C23F53B-880D-4A1D-B445-BEEE88A5F3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C23F53B-880D-4A1D-B445-BEEE88A5F3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C23F53B-880D-4A1D-B445-BEEE88A5F3BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

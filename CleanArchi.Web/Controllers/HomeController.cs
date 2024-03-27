@@ -1,4 +1,6 @@
+using CleanArchi.Application.Common.Interfaces;
 using CleanArchi.Web.Models;
+using CleanArchi.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,24 @@ namespace CleanArchi.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitOfWork unitOfWork, ILogger<HomeController> logger)
         {
+            _unitOfWork = unitOfWork;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            HomeVM homeVM = new()
+            {
+                VillaList = _unitOfWork.Villa.GetAll(includeProperties: "VillaAmenity"),
+                Nights=1,
+                CheckInDate = DateOnly.FromDateTime(DateTime.Now),
+            };
+
+            return View(homeVM);
         }
 
         public IActionResult Privacy()
