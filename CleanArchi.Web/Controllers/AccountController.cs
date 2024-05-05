@@ -1,4 +1,5 @@
 ﻿using CleanArchi.Application.Common.Interfaces;
+using CleanArchi.Application.Common.Utility;
 using CleanArchi.Domain.Entities;
 using CleanArchi.Infrastructure.Repository;
 using CleanArchi.Web.ViewModels;
@@ -39,11 +40,11 @@ namespace CleanArchi.Web.Controllers
         public IActionResult Register()
         {
             //Admin Roleが存在しなければ、新規作成
-            if (!_roleManager.RoleExistsAsync("Admin").GetAwaiter().GetResult())
+            if (!_roleManager.RoleExistsAsync(SD.Role_Admin).GetAwaiter().GetResult())
             {
                 //Role作成
-                _roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
-                _roleManager.CreateAsync(new IdentityRole("Customer")).Wait();
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).Wait();
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).Wait();
 
             }
 
