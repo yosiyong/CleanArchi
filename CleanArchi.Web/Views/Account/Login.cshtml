@@ -14,6 +14,7 @@
                 <div class="col-md-12">
                     <section>
                         <form method="post">
+                            <input asp-for="RedirectUrl" hidden />
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-floating mb-3">
                                 <input asp-for="Email" class="form-control" aria-required="true" />
@@ -37,10 +38,10 @@
                             </div>
                             <div class="d-flex justify-content-between pt-2">
                                 <p>
-                                    <a asp-action="ForgotPassword">パスワードをお忘れの方はこちらへ</a>
+                                    <a asp-action="ForgotPassword">パスワードをお忘れの場合</a>
                                 </p>
                                 <p>
-                                    <a asp-action="Register">新規ユーザー登録する方はこちらへ</a>
+                                    <a asp-action="Register" asp-route-returnUrl="@Model.RedirectUrl">新規ユーザー登録する場合</a>
                                 </p>
                             </div>
                         </form>

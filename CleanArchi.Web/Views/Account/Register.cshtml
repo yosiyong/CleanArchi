@@ -12,6 +12,8 @@
             <div class="row pt-3">
                 <div class="col-md-12">
                     <form class="row" method="post">
+                        <input asp-for="RedirectUrl" hidden />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-floating mb-3 col-md-12">
                             <input asp-for="Email" class="form-control" aria-required="true" />
                             <label asp-for="Email" class="ms-2 text-muted"></label>
@@ -34,17 +36,17 @@
                         </div>
                         <div class="form-floating mb-3 col-md-6">
                             <input asp-for="ConfirmPassword" class="form-control" />
-                            <label asp-for="ConfirmPassword" class="ms-2 text-muted"></label>
+                            <label asp-for="ConfirmPassword" class="ms-2 text-muted">Confirm Password</label>
                             <span asp-validation-for="ConfirmPassword" class="text-danger" />
                         </div>
 
                         <div class="form-floating mb-3 col-md-6">
                             <select asp-for="Role" asp-items="@Model.RoleList" class="form-select">
-                                <option disabled selected>-ロールを選択-</option>
+                                <option disabled selected>-ロール選択-</option>
                             </select>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="w-100 btn btn-lg btn-outline-success">Register</button>
+                            <button type="submit" class="w-100 btn btn-lg btn-outline-success">登録</button>
                         </div>
                     </form>
                 </div>
@@ -53,3 +55,8 @@
     </div>
 
 </div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
