@@ -1,11 +1,12 @@
 ﻿using CleanArchi.Application.Common.Interfaces;
 using CleanArchi.Domain.Entities;
-using CleanArchi.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchi.Web.Controllers
 {
+    //ログイン中のみアクセス可
+    [Authorize]
     public class VillaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

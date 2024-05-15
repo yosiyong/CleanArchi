@@ -1,11 +1,15 @@
 ﻿using CleanArchi.Application.Common.Interfaces;
+using CleanArchi.Application.Common.Utility;
 using CleanArchi.Domain.Entities;
 using CleanArchi.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CleanArchi.Web.Controllers
 {
+    //ログイン中のadminのみアクセス可能
+    [Authorize(Roles = SD.Role_Admin)]
     public class AmenityController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
